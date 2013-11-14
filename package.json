@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Yet another stopwatch for performance tests."
   "author": "fuqcool@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuqcool/stopwatch.js.git"
+  },
   "license": "MIT",
   "main": "./stopwatch.js",
   "keywords": ["stopwatch", "performance", "timer", "test"]
