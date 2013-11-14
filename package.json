@@ -1,0 +1,9 @@
+{
+  "name": "stopwatch.js",
+  "version": "0.0.1",
+  "description": "Yet another stopwatch for performance tests."
+  "author": "fuqcool@gmail.com",
+  "license": "MIT",
+  "main": "./stopwatch.js",
+  "keywords": ["stopwatch", "performance", "timer", "test"]
+}
