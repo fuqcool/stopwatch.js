@@ -1,7 +1,9 @@
 'use strict';
 
 function defaultReporter(name, records) {
-  console.log('report: ', name);
+  var report = '';
+
+  report += 'report: ' + name + '\n';
 
   var i;
   for (i = 0; i < records.length; i++) {
@@ -9,12 +11,12 @@ function defaultReporter(name, records) {
       var lastRecord = records[i - 1];
       var currentRecord = records[i];
 
-      console.log(lastRecord.info + ' > ' + currentRecord.info + '    costs: ' +
-                  (currentRecord.time - lastRecord.time) + 'ms');
+      report += lastRecord.info + ' > ' + currentRecord.info + '    costs: ' +
+        (currentRecord.time - lastRecord.time) + 'ms\n';
     }
   }
 
-  console.log('');
+  return report + '\n';
 }
 
 function stopwatch(name) {
@@ -29,7 +31,7 @@ function stopwatch(name) {
     return new Date();
   };
 
-  var press = function (info) {
+  var lap = function (info) {
     records.push({
       info: info,
       time: now()
@@ -37,21 +39,27 @@ function stopwatch(name) {
   };
 
   var start = function () {
-    press('start');
+    lap('start');
   };
 
   var stop = function () {
-    press('stop');
+    lap('stop');
+  };
+
+  var reset = function () {
+    records.length = 0;
   };
 
   var report = function () {
-    stopwatch.reporter(name, records);
+    return stopwatch.reporter(name, records);
   };
 
   return {
+    _records: records,
     start: start,
     stop: stop,
-    press: press,
+    lap: lap,
+    reset: reset,
     report: report
   };
 }
