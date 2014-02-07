@@ -3,8 +3,7 @@ yastopwatch [![Build Status](https://travis-ci.org/fuqcool/yastopwatch.png?branc
 
 Yet another stopwatch for performance tests.
 
-Usage
-==========
+### Usage
 
 ``` javascript
 var stopwatch = require('yastopwatch');
@@ -52,8 +51,7 @@ stopwatch.reportHandler = function (records) {
 };
 ```
 
-License
-===========
+### License
 
 The MIT License (MIT)
 
