@@ -11,7 +11,7 @@ function defaultReportHandler(records) {
       var lastRecord = records[i - 1];
       var currentRecord = records[i];
 
-      report += lastRecord.info + ' > ' + currentRecord.info + ' \t costs: ' +
+      report += lastRecord.title + ' > ' + currentRecord.title + ' \t costs: ' +
         (currentRecord.time - lastRecord.time) + 'ms\n';
     }
   }
@@ -27,9 +27,9 @@ function stopwatch() {
     return new Date();
   };
 
-  var lap = function (info) {
+  var lap = function (title) {
     records.push({
-      info: info,
+      title: title,
       time: now()
     });
   };

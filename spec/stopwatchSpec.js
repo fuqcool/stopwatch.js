@@ -11,21 +11,21 @@ describe("stopwatch tests", function () {
     watch.start();
 
     expect(watch._records.length).toBe(1);
-    expect(watch._records[0].info).toBe("start");
+    expect(watch._records[0].title).toBe("start");
   });
 
   it("should add records on lap", function () {
     watch.lap("first lap");
 
     expect(watch._records.length).toBe(1);
-    expect(watch._records[0].info).toBe("first lap");
+    expect(watch._records[0].title).toBe("first lap");
   });
 
   it("should add records on stop", function () {
     watch.stop();
 
     expect(watch._records.length).toBe(1);
-    expect(watch._records[0].info).toBe("stop");
+    expect(watch._records[0].title).toBe("stop");
   });
 
   it("should reset records", function () {
@@ -44,17 +44,17 @@ describe("stopwatch tests", function () {
     var startTime = new Date();
 
     watch._records.push({
-      info: "start",
+      title: "start",
       time: startTime
     });
 
     watch._records.push({
-      info: "first lap",
+      title: "first lap",
       time: new Date(startTime.getTime() + 100)
     });
 
     watch._records.push({
-      info: "second lap",
+      title: "second lap",
       time: new Date(startTime.getTime() + 1000)
     });
 
