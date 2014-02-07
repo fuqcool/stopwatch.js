@@ -11,16 +11,15 @@ function defaultReportHandler(records) {
       var lastRecord = records[i - 1];
       var currentRecord = records[i];
 
-      report += lastRecord.info + ' > ' + currentRecord.info + '    costs: ' +
+      report += lastRecord.info + ' > ' + currentRecord.info + ' \t costs: ' +
         (currentRecord.time - lastRecord.time) + 'ms\n';
     }
   }
 
-  return report + '\n';
+  return report;
 }
 
 function stopwatch() {
-  console.log('new stopwatch');
   var records = [];
   var startTime = null;
 

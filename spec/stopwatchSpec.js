@@ -59,8 +59,8 @@ describe("stopwatch tests", function () {
     });
 
     var expectedReport = 'yastopwatch report:\n' +
-      'start > first lap    costs: 100ms\n' +
-      'first lap > second lap    costs: 900ms\n\n';
+      'start > first lap \t costs: 100ms\n' +
+      'first lap > second lap \t costs: 900ms\n';
 
     expect(watch.report()).toBe(expectedReport);
   });
