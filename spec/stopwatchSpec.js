@@ -1,10 +1,10 @@
 describe("stopwatch tests", function () {
-  var stopwatch;
   var watch;
 
   beforeEach(function () {
-    stopwatch = require("../stopwatch.js");
-    watch = stopwatch("test");
+    watch = require("../stopwatch.js");
+    watch.reset();
+    watch.reportHandler = watch._defaultReportHandler;
   });
 
   it("should add records on start", function () {
@@ -58,7 +58,7 @@ describe("stopwatch tests", function () {
       time: new Date(startTime.getTime() + 1000)
     });
 
-    var expectedReport = 'report: test\n' +
+    var expectedReport = 'yastopwatch report:\n' +
       'start > first lap    costs: 100ms\n' +
       'first lap > second lap    costs: 900ms\n\n';
 
@@ -69,7 +69,7 @@ describe("stopwatch tests", function () {
   it("should be able to customize report", function () {
     var myReporter = jasmine.createSpy("myReporter").andReturn("my report");
 
-    stopwatch.reporter = myReporter;
+    watch.reportHandler = myReporter;
 
     watch.start();
     watch.lap("first lap");
@@ -78,8 +78,7 @@ describe("stopwatch tests", function () {
     var report = watch.report();
 
     expect(myReporter).toHaveBeenCalled();
-    expect(myReporter.mostRecentCall.args[0]).toBe("test");
-    expect(myReporter.mostRecentCall.args[1].length).toBe(3);
+    expect(myReporter.mostRecentCall.args[0].length).toBe(3);
     expect(report).toBe("my report");
   });
 });

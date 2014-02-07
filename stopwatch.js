@@ -1,9 +1,9 @@
 'use strict';
 
-function defaultReporter(name, records) {
+function defaultReportHandler(records) {
   var report = '';
 
-  report += 'report: ' + name + '\n';
+  report += 'yastopwatch report:\n';
 
   var i;
   for (i = 0; i < records.length; i++) {
@@ -19,11 +19,8 @@ function defaultReporter(name, records) {
   return report + '\n';
 }
 
-function stopwatch(name) {
-  if (typeof name !== 'string') {
-    name = 'default';
-  }
-
+function stopwatch() {
+  console.log('new stopwatch');
   var records = [];
   var startTime = null;
 
@@ -50,21 +47,25 @@ function stopwatch(name) {
     records.length = 0;
   };
 
+  var obj;
+
   var report = function () {
-    return stopwatch.reporter(name, records);
+    return obj.reportHandler(records);
   };
 
-  return {
+  obj = {
     _records: records,
+    _defaultReportHandler: defaultReportHandler,
     start: start,
     stop: stop,
     lap: lap,
     reset: reset,
-    report: report
+    report: report,
+    reportHandler: defaultReportHandler,
+
   };
+
+  return obj;
 }
 
-stopwatch.reporter = defaultReporter;
-
-
-module.exports = stopwatch;
+module.exports = stopwatch();
