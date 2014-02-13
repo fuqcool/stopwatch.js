@@ -5,7 +5,7 @@
   "author": "fuqcool@gmail.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fuqcool/stopwatch.js.git"
+    "url": "https://github.com/fuqcool/yastopwatch.git"
   },
   "scripts": {
     "test": "jasmine-node spec/"
